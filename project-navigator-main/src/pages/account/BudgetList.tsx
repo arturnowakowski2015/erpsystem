@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { PageHeader } from '@/components/common/PageHeader';
@@ -10,9 +10,28 @@ import { format } from 'date-fns';
 
 export default function BudgetList() {
   const navigate = useNavigate();
-  const { budgets } = useBudgetStore();
+  const { budgets, fetchBudgets } = useBudgetStore();
   const { getAccount } = useAnalyticalAccountStore();
   const [showArchived, setShowArchived] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fetch fresh budget data when component mounts
+  useEffect(() => {
+    const loadBudgets = async () => {
+      setIsLoading(true);
+      await fetchBudgets();
+
+      // Refresh all confirmed budgets to get latest achieved amounts
+      const confirmedBudgets = budgets.filter(b => b.state === 'confirmed');
+      await Promise.all(
+        confirmedBudgets.map(b => useBudgetStore.getState().refreshBudget(b.id))
+      );
+
+      setIsLoading(false);
+    };
+
+    loadBudgets();
+  }, []); // Run only on mount
 
   const filteredBudgets = budgets.filter((b) =>
     showArchived ? b.state === 'archived' : b.state !== 'archived'
