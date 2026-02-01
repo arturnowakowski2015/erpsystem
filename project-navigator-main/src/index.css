@@ -1,0 +1,451 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Premium Medium-Dark Theme - Readable with Dark Cards */
+    --background: 230 35% 12%;
+    /* Rich dark indigo background */
+    --foreground: 210 40% 98%;
+    /* Soft white text */
+
+    --card: 230 25% 20%;
+    /* Medium-dark cards - lighter than background */
+    --card-foreground: 210 40% 98%;
+    /* Light text on dark cards */
+
+    --popover: 230 25% 20%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 250 75% 60%;
+    /* Vibrant purple-blue */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 230 20% 28%;
+    /* Lighter secondary */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 230 20% 25%;
+    /* Muted backgrounds */
+    --muted-foreground: 215 20% 75%;
+    /* Lighter muted text */
+
+    --accent: 180 70% 50%;
+    /* Bright cyan accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 20% 32%;
+    /* Lighter borders for visibility */
+    --input: 230 20% 28%;
+    --ring: 250 75% 60%;
+
+    /* Semantic status colors - vibrant */
+    --success: 142 76% 45%;
+    /* Brighter green */
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 55%;
+    /* Brighter orange */
+    --warning-foreground: 0 0% 100%;
+
+    --info: 199 89% 52%;
+    /* Bright blue */
+    --info-foreground: 0 0% 100%;
+
+    --draft: 215 20% 55%;
+    /* Light gray */
+    --draft-foreground: 0 0% 100%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: var(--background);
+    --sidebar-foreground: var(--foreground);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--secondary);
+    --sidebar-accent-foreground: var(--secondary-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+
+    /* Chart colors - vibrant */
+    --chart-1: 250 75% 60%;
+    --chart-2: 180 70% 50%;
+    --chart-3: 142 76% 45%;
+    --chart-4: 38 92% 55%;
+    --chart-5: 340 75% 55%;
+
+    --sidebar: var(--card);
+
+    --font-sans: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    --font-serif: 'EB Garamond', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+    /* Enhanced Shadow System for dark theme */
+    --shadow-2xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+    --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+
+    --tracking-normal: 0em;
+    --spacing: 0.25rem;
+  }
+
+  .dark {
+    /* Already dark, keep same */
+    --background: 230 35% 12%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 25% 20%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 25% 20%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 250 75% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 230 20% 28%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 230 20% 25%;
+    --muted-foreground: 215 20% 75%;
+
+    --accent: 180 70% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 20% 32%;
+    --input: 230 20% 28%;
+    --ring: 250 75% 60%;
+
+    /* Semantic Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    --draft: 0 0% 45%;
+    --draft-foreground: 0 0% 100%;
+
+    --border: 217 19% 27%;
+    --input: 217 19% 27%;
+    --ring: 235 70% 60%;
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 235 70% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 19% 27%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 217 19% 27%;
+    --sidebar-ring: 235 70% 60%;
+
+    /* Enhanced Chart Colors */
+    --chart-1: 235 70% 60%;
+    --chart-2: 180 65% 50%;
+    --chart-3: 142 76% 36%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 0 72% 51%;
+
+    --sidebar: 222 47% 15%;
+
+    /* Enhanced Shadow System for Dark Mode */
+    --shadow-2xs: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
+    --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.4), 0 1px 3px 0 hsl(0 0% 0% / 0.5);
+    --shadow-sm: 0 2px 4px -1px hsl(0 0% 0% / 0.4), 0 4px 6px -1px hsl(0 0% 0% / 0.5);
+    --shadow: 0 4px 6px -1px hsl(0 0% 0% / 0.5), 0 2px 4px -1px hsl(0 0% 0% / 0.4);
+    --shadow-md: 0 6px 12px -2px hsl(0 0% 0% / 0.5), 0 3px 7px -3px hsl(0 0% 0% / 0.5);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.5), 0 4px 6px -2px hsl(0 0% 0% / 0.4);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.5), 0 10px 10px -5px hsl(0 0% 0% / 0.3);
+    --shadow-2xl: 0 25px 50px -12px hsl(0 0% 0% / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+
+  /* Tabular numbers for financial data */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Enhanced hover states */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Card enhancements */
+  .card-hover {
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .card-hover:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: hsl(var(--primary) / 0.2);
+  }
+
+  /* Glassmorphism effect */
+  .glass-card {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+  }
+
+  .gradient-success {
+    background: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(var(--success) / 0.8) 100%);
+  }
+
+  .gradient-warning {
+    background: linear-gradient(135deg, hsl(var(--warning)) 0%, hsl(var(--warning) / 0.8) 100%);
+  }
+
+  .gradient-info {
+    background: linear-gradient(135deg, hsl(var(--info)) 0%, hsl(var(--info) / 0.8) 100%);
+  }
+
+  /* Shimmer loading effect */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right,
+        hsl(var(--muted) / 0.1) 4%,
+        hsl(var(--muted) / 0.3) 25%,
+        hsl(var(--muted) / 0.1) 36%);
+    background-size: 1000px 100%;
+  }
+
+  /* Pulse animation for emphasis */
+  @keyframes pulse-subtle {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  .pulse-subtle {
+    animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Scale on hover */
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Glow effect */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .glow-success {
+    box-shadow: 0 0 20px hsl(var(--success) / 0.3);
+  }
+
+  .glow-warning {
+    box-shadow: 0 0 20px hsl(var(--warning) / 0.3);
+  }
+
+  /* Fade in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  /* Slide in from right */
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.4s ease-out;
+  }
+
+  /* Number count animation */
+  @keyframes countUp {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-count-up {
+    animation: countUp 0.5s ease-out;
+  }
+
+  /* Gradient text */
+  .text-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Border gradient */
+  .border-gradient {
+    border: 2px solid transparent;
+    background-image: linear-gradient(hsl(var(--background)), hsl(var(--background))),
+      linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Context-aware background system - DARK THEME gradients */
+  .bg-admin-context {
+    background: linear-gradient(135deg, hsl(230 35% 13%) 0%, hsl(240 40% 15%) 100%);
+  }
+
+  .bg-portal-context {
+    background: linear-gradient(135deg, hsl(230 35% 13%) 0%, hsl(200 30% 15%) 100%);
+  }
+
+  .bg-finance-context {
+    background: linear-gradient(135deg, hsl(230 35% 12%) 0%, hsl(220 30% 14%) 100%);
+  }
+
+  /* Layered section backgrounds - DARK */
+  .section-background {
+    background: linear-gradient(180deg, hsl(230 35% 13%) 0%, hsl(230 30% 10%) 100%);
+  }
+
+  /* Attractive animated gradient background - DARK THEME */
+  @keyframes gradientShift {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .bg-animated-gradient {
+    background: linear-gradient(135deg,
+        hsl(230 35% 12%) 0%,
+        hsl(250 40% 15%) 25%,
+        hsl(270 35% 13%) 50%,
+        hsl(230 35% 12%) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  /* Subtle animated background for page load */
+  @keyframes backgroundFade {
+    from {
+      opacity: 0.8;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-background-fade {
+    animation: backgroundFade 0.6s ease-out;
+  }
+}
