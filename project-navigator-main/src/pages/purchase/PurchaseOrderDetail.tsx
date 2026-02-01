@@ -105,8 +105,8 @@ export default function PurchaseOrderDetail() {
       setLoading(true);
       await usePurchaseOrderStore.getState().confirmOrder(order.id);
       toast.success('Order confirmed, bill paid, and budget deducted!');
-      // Navigate to vendor bills list
-      navigate('/purchase/bills');
+      // Navigate to budgets page to see the deduction
+      navigate('/account/budgets');
     } catch (error) {
       console.error('Error confirming order:', error);
       toast.error('Failed to confirm order');
