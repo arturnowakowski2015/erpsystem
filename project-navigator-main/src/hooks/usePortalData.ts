@@ -247,19 +247,26 @@ export function usePortalDashboard(refreshTrigger?: number) {
   return { stats, loading, refresh: fetchStats };
 }
 
-// Hook for portal sales orders - ONLY CONFIRMED orders visible
+// Hook for portal sales orders - ONLY CONFIRMED orders visible FOR THIS CUSTOMER
 export function usePortalSalesOrders() {
   const [orders, setOrders] = useState<PortalSalesOrder[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  const { contactId } = usePortalContactId();
 
   const fetchOrders = useCallback(async () => {
+    if (!contactId) {
+      setLoading(false);
+      return;
+    }
+
     setLoading(true);
     try {
-      // Portal users ONLY see CONFIRMED sales orders
+      // Portal users ONLY see CONFIRMED sales orders where they are the customer
       const { data, error } = await supabase
         .from('sales_orders')
         .select('*')
+        .eq('customer_id', contactId) // Filter by customer
         .eq('is_archived', false)
         .eq('status', 'confirmed')
         .order('created_at', { ascending: false });
@@ -276,7 +283,7 @@ export function usePortalSalesOrders() {
     } finally {
       setLoading(false);
     }
-  }, [toast]);
+  }, [toast, contactId]);
 
   useEffect(() => {
     fetchOrders();
