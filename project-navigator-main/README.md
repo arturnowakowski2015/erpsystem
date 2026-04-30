@@ -1,11 +1,7 @@
 # Shiv Furniture ERP System
 
 A modern, full-featured ERP (Enterprise Resource Planning) system built specifically for furniture manufacturing and retail businesses. This comprehensive solution manages everything from inventory and purchase orders to sales, invoicing, and customer portals.
-
-![Premium Dark Theme](https://img.shields.io/badge/Theme-Premium%20Dark-7c3aed)
-![React](https://img.shields.io/badge/React-18.3.1-61dafb)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.6.2-3178c6)
-![Vite](https://img.shields.io/badge/Vite-6.0.1-646cff)
+ 
 
 ## 🌟 Features
 
@@ -179,17 +175,7 @@ Edit the CSS variables in `src/index.css`:
 ## 🔑 Default Credentials
 
 For testing purposes (if demo data is available):
-
-```
-Admin User:
-Email: admin@shivfurniture.com
-Password: [Contact Administrator]
-
-Portal User:
-Email: customer@example.com
-Password: [Contact Administrator]
-```
-
+ 
 ## 🌐 Deployment
 
 ### Deploy to Vercel
@@ -217,70 +203,6 @@ Password: [Contact Administrator]
 - **Sales Orders**: Complete sales workflow with invoicing
 - **Customer Portal**: Self-service portal for customers
 - **Budget Management**: Track and monitor budgets
-
-### Component Usage
-
-All UI components are based on **shadcn-ui** and can be found in `src/components/ui/`. 
-
-Example usage:
-
-```tsx
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-
-function MyComponent() {
-  return (
-    <Card>
-      <Button variant="primary">Click Me</Button>
-    </Card>
-  );
-}
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Issue**: `npm install` fails
-- **Solution**: Delete `node_modules` and `package-lock.json`, then run `npm install` again
-
-**Issue**: Port 8080 already in use
-- **Solution**: Change port in `vite.config.ts` or kill the process using port 8080
-
-**Issue**: Supabase connection error
-- **Solution**: Verify your `.env` file has correct Supabase credentials
-
-**Issue**: Build fails
-- **Solution**: Run `npm run lint` to check for errors, fix them, then rebuild
-
-## 📄 License
-
-This project is proprietary software for Shiv Furniture. All rights reserved.
-
-## 👥 Support
-
-For support, email support@shivfurniture.com or contact your system administrator.
-
-## 🎯 Roadmap
-
-- [ ] Mobile app (React Native)
-- [ ] Advanced analytics dashboard
-- [ ] Multi-warehouse support
-- [ ] Barcode scanning
-- [ ] Email notifications
-- [ ] PDF export for reports
-- [ ] Multi-language support
-
----
-
-**Built with ❤️ for Shiv Furniture**
-
-*Last Updated: February 2026*
+ 
+ 
+  
