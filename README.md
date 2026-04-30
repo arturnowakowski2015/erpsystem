@@ -1,4 +1,4 @@
-# Shiv Furniture ERP System
+# ERP System
 
 A modern, full-featured ERP (Enterprise Resource Planning) system built specifically for furniture manufacturing and retail businesses. This comprehensive solution manages everything from inventory and purchase orders to sales, invoicing, and customer portals.
  
