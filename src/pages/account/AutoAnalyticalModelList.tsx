@@ -50,7 +50,6 @@ export default function AutoAnalyticalModelList() {
         product_category:product_categories(name),
         partner_tag:tags(name, color)
       `)
-      .order('status', { ascending: false })
       .order('priority', { ascending: false });
 
     if (error) {

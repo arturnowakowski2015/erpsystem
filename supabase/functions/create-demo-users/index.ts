@@ -24,8 +24,8 @@ serve(async (req) => {
 
     const demoUsers = [
       {
-        email: "admin@shivfurniture.com",
-        password: "Admin@123",
+        email: "arturnowakowski2015@gmail.com",
+        password: "q",
         name: "Admin User",
         role: "admin" as const,
       },

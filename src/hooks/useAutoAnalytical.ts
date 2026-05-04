@@ -6,12 +6,12 @@
  */
 
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { 
-  autoAssignAnalyticalAccount, 
+import {
+  autoAssignAnalyticalAccount,
   getAnalyticsAssignment,
   batchAssignAnalyticalAccounts,
   invalidateModelCache,
-} from '@/services/autoAnalyticalEngine';
+} from '@/services/autoAnalyticalEngine.adapter';
 import type { AnalyticsAssignmentResult } from '@/types/autoAnalyticalModel';
 
 // Re-export for type usage
@@ -22,22 +22,22 @@ interface UseAutoAnalyticalOptions {
    * Partner ID from the transaction header
    */
   partnerId?: string;
-  
+
   /**
    * Product ID for the line being edited
    */
   productId?: string;
-  
+
   /**
    * Debounce delay in ms (default: 300)
    */
   debounceMs?: number;
-  
+
   /**
    * Whether to auto-apply on changes (default: true)
    */
   autoApply?: boolean;
-  
+
   /**
    * Callback when analytics are assigned
    */
@@ -49,27 +49,27 @@ interface UseAutoAnalyticalReturn {
    * The assigned analytical account ID (null if no match)
    */
   analyticalAccountId: string | null;
-  
+
   /**
    * Full assignment result with metadata
    */
   assignmentResult: AnalyticsAssignmentResult | null;
-  
+
   /**
    * Whether the engine is currently processing
    */
   isLoading: boolean;
-  
+
   /**
    * Manually trigger re-evaluation
    */
   refresh: () => Promise<void>;
-  
+
   /**
    * Clear the current assignment
    */
   clear: () => void;
-  
+
   /**
    * Whether the current value was auto-assigned
    */
@@ -81,19 +81,19 @@ interface UseAutoAnalyticalReturn {
  * Automatically evaluates rules when partner or product changes
  */
 export function useAutoAnalytical(options: UseAutoAnalyticalOptions = {}): UseAutoAnalyticalReturn {
-  const { 
-    partnerId, 
-    productId, 
-    debounceMs = 300, 
+  const {
+    partnerId,
+    productId,
+    debounceMs = 300,
     autoApply = true,
-    onAssign 
+    onAssign
   } = options;
 
   const [analyticalAccountId, setAnalyticalAccountId] = useState<string | null>(null);
   const [assignmentResult, setAssignmentResult] = useState<AnalyticsAssignmentResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isAutoAssigned, setIsAutoAssigned] = useState(false);
-  
+
   const debounceTimer = useRef<NodeJS.Timeout | null>(null);
   const lastEvaluatedRef = useRef<string>('');
 
@@ -114,14 +114,14 @@ export function useAutoAnalytical(options: UseAutoAnalyticalOptions = {}): UseAu
     lastEvaluatedRef.current = key;
 
     setIsLoading(true);
-    
+
     try {
       const result = await getAnalyticsAssignment(partnerId, productId);
-      
+
       setAssignmentResult(result);
       setAnalyticalAccountId(result.analyticalAccountId);
       setIsAutoAssigned(result.isAutoAssigned);
-      
+
       onAssign?.(result);
     } catch (error) {
       console.error('[useAutoAnalytical] Evaluation error:', error);
@@ -221,13 +221,13 @@ export function useBatchAutoAnalytical(options: UseBatchAutoAnalyticalOptions): 
       }));
 
       const results = await batchAssignAnalyticalAccounts(inputs);
-      
+
       const newAssignments = new Map<string, string | null>();
       for (const result of results) {
         newAssignments.set(result.lineId, result.analyticalAccountId);
         onAssign?.(result.lineId, result.analyticalAccountId);
       }
-      
+
       setAssignments(newAssignments);
     } catch (error) {
       console.error('[useBatchAutoAnalytical] Batch evaluation error:', error);
@@ -276,7 +276,7 @@ export function useAutoAnalyticalEvaluator() {
   const [isLoading, setIsLoading] = useState(false);
 
   const evaluate = useCallback(async (
-    partnerId?: string, 
+    partnerId?: string,
     productId?: string
   ): Promise<string | undefined> => {
     setIsLoading(true);
@@ -291,7 +291,7 @@ export function useAutoAnalyticalEvaluator() {
   }, []);
 
   const evaluateFull = useCallback(async (
-    partnerId?: string, 
+    partnerId?: string,
     productId?: string
   ): Promise<AnalyticsAssignmentResult> => {
     setIsLoading(true);

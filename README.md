@@ -171,38 +171,6 @@ Edit the CSS variables in `src/index.css`:
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build |
 | `npm run lint` | Run ESLint |
-
-## 🔑 Default Credentials
-
-For testing purposes (if demo data is available):
- 
-## 🌐 Deployment
-
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Import project in [Vercel](https://vercel.com)
-3. Add environment variables
-4. Deploy!
-
-### Deploy to Netlify
-
-1. Push your code to GitHub
-2. Import project in [Netlify](https://netlify.com)
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-5. Add environment variables
-6. Deploy!
-
-## 📚 Documentation
-
-### Key Features Documentation
-
-- **Authentication Flow**: Multi-step signup with OTP verification
-- **Purchase Orders**: Create, track, and manage purchase orders
-- **Sales Orders**: Complete sales workflow with invoicing
-- **Customer Portal**: Self-service portal for customers
-- **Budget Management**: Track and monitor budgets
  
  
   

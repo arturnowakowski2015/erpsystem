@@ -28,11 +28,16 @@ export default function ForgotPassword() {
 
     setIsLoading(true);
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Wywołanie prawdziwego resetu hasła przez Supabase
+      const { error } = await import('@/integrations/supabase/client').then(({ supabase }) =>
+        supabase.auth.resetPasswordForEmail(email)
+      );
+      if (error) {
+        throw error;
+      }
       setEmailSent(true);
       toast.success('Password reset email sent!');
-    } catch {
+    } catch (err: any) {
       toast.error('Failed to send reset email. Please try again.');
     } finally {
       setIsLoading(false);

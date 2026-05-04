@@ -27,7 +27,7 @@ export const sendOTP = async (email: string): Promise<{ success: boolean; error?
   try {
     // Validate environment variables
     if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-      console.error('EmailJS configuration missing');
+      console.error('EmailJS configuration missing ', SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY);
       return { success: false, error: 'Email service not configured properly' };
     }
 

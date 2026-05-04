@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { toast } from 'sonner';
-import { calculateModelPriority } from '@/services/autoAnalyticalEngine';
+import { calculateModelPriority } from '@/services/autoAnalyticalEngine.adapter';
 import { AlertCircle, Info, Sparkles, Loader2, CheckCircle2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useAISuggestion } from '@/hooks/useAISuggestion';
@@ -621,12 +621,12 @@ export default function AutoAnalyticalModelForm() {
                           ★ {budget.name} (Bal: ₹{(budget.remaining_balance || 0).toLocaleString('en-IN')})
                         </SelectItem>
                       ))}
-                    {budgets.filter(b => b.analytical_account_id === formData.analyticalAccountId).length > 0 && 
-                     budgets.filter(b => b.analytical_account_id !== formData.analyticalAccountId).length > 0 && (
-                      <SelectItem value="---" disabled className="text-muted-foreground text-xs">
-                        ── Other Budgets ──
-                      </SelectItem>
-                    )}
+                    {budgets.filter(b => b.analytical_account_id === formData.analyticalAccountId).length > 0 &&
+                      budgets.filter(b => b.analytical_account_id !== formData.analyticalAccountId).length > 0 && (
+                        <SelectItem value="---" disabled className="text-muted-foreground text-xs">
+                          ── Other Budgets ──
+                        </SelectItem>
+                      )}
                     {budgets
                       .filter(b => b.analytical_account_id !== formData.analyticalAccountId)
                       .map((budget) => (
